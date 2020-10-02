@@ -1,32 +1,37 @@
 import numpy as np
 
-# a=np.arange(5)
-# print(a[4])
+# def isPrime(x): 
+#     i = np.arange(x - 1, 1, -1) # vector of numbers to divide by
+#     print(i) 
+#     xx = np.ones(len(i)) * x # vector of number being tested 
+#     print(xx)
+#     g = np.mod(xx,i) # perform mod to test for prime-ness 
+#     m = np.zeros(len(i)) # if anything = 0, then not prime 
+#     return (sum(g == m) <= 0) # return result of test
 
-# g=['a','b','c','d']
+# isPrime(6)
 
-# for i in range(len(g)):
-#     print(i,g[i])
+# from functools import reduce
+# g = [1,2,3,4,5]
+# m = list(map(lambda x: x ** 2, g)) 
+# print(m)
+# r = reduce(lambda x, y: x + y, g) 
+# print(r)
 
-# f=[1,2,3,4]
+# def map(setvector, target): 
+#     setvector[target] = setvector[target] * 10
+#     if target < len(setvector) - 1: 
+#         return map(setvector, target + 1) 
+#     else: 
+#         return setvector
+# print(map(g,4))
 
-# for i in range(4):
-#     print(i,f[i])
+from sympy import *
 
-#why this happen
+# x = symbols('x')
+# expr = limit(sin(x)/x,x,0)
+# b = expr.doit()
+# print(expr,b)
 
+Matrix([[1,2,3],[4,5,6],[7,8,0]]).rref()
 
-# g = int(np.random.rand() * 10) 
-# i = g + 1
-# while(g != int(i)): 
-#     i = input("Guess a number!")
-# print("You guessed correctly!")
-
-def do_things(vector, position): 
-    if(position < len(vector)): 
-        vector[position] = np.random.rand() 
-        return do_things(vector, position + 1) 
-    else: 
-        return vector
-g = do_things(np.zeros(3), 0)
-print(g)
