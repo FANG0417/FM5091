@@ -3,39 +3,44 @@ import math
 import numpy as np
 from scipy.stats import norm
 
+#Basic Functions
+d1 = lambda S, K, T, r, sigma: (math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T))
+
+d2 = lambda S, K, T, r, sigma: d1(S, K, T, r, sigma) - (sigma * math.sqrt(T))
+
 # BSM Valuation
 
-BSM_call_price = lambda S,K,T,r,sigma: (S * norm.cdf((math.log(S / K) + (r + 0.5 * sigma**2)* T) / (sigma * math.sqrt(T)), 0, 1) - K * math.exp(-r * T) * norm.cdf((math.log(S / K) + ( r + 0.5 * sigma**2) * T ) / ( sigma *math.sqrt(T))- sigma * math.sqrt(T), 0, 1))
+BSM_call_price = lambda S,K,T,r,sigma: (S * norm.cdf(d1(S, K, T, r, sigma), 0, 1) - K * math.exp(-r * T) * norm.cdf(d2(S, K, T, r, sigma), 0, 1))
 
-BSM_put_price = lambda S,K,T,r,sigma: K * math.exp(-r * T) * norm.cdf(sigma * math.sqrt(T) - (math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1) - S * norm.cdf(-(math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1)
+BSM_put_price = lambda S,K,T,r,sigma: K * math.exp(-r * T) * norm.cdf(-d2(S, K, T, r, sigma), 0, 1) - S * norm.cdf(-d1(S, K, T, r, sigma), 0, 1)
 
 # Greeks Valuation
 
 #Delta
 
-BSM_call_delta = lambda S,K,T,r,sigma: norm.cdf((math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1)
+BSM_call_delta = lambda S,K,T,r,sigma: norm.cdf(d1(S, K, T, r, sigma), 0, 1)
  
-BSM_put_delta = lambda S,K,T,r,sigma: norm.cdf((math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1) - 1
+BSM_put_delta = lambda S,K,T,r,sigma: norm.cdf(d1(S, K, T, r, sigma), 0, 1) - 1
 
 #Theta
 
-BSM_call_theta = lambda S,K,T,r,sigma: -S * norm.pdf((math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1)* sigma / (2 * math.sqrt(T)) - r * K * math.exp(-r * T) * norm.cdf((math.log(S/K) + (r + 0.5 * sigma**2) * T) / (sigma*math.sqrt(T)) - sigma * math.sqrt(T),0,1)
+BSM_call_theta = lambda S,K,T,r,sigma: -S * norm.pdf(d1(S, K, T, r, sigma), 0, 1)* sigma / (2 * math.sqrt(T)) - r * K * math.exp(-r * T) * norm.cdf(d2(S, K, T, r, sigma),0,1)
 
-BSM_put_theta = lambda S,K,T,r,sigma: -S * norm.pdf((math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1) * sigma / (2 * math.sqrt(T)) + r * K * math.exp(-r * T) * norm.cdf(sigma * math.sqrt(T) - (math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1)
+BSM_put_theta = lambda S,K,T,r,sigma: -S * norm.pdf(d1(S, K, T, r, sigma), 0, 1) * sigma / (2 * math.sqrt(T)) + r * K * math.exp(-r * T) * norm.cdf(d2(S, K, T, r, sigma), 0, 1)
 
 #Gamma
 
-BSM_gamma = lambda S,K,T,r,sigma: norm.pdf((math.log(S / K) + (r + 0.5 * sigma**2) * T)/(sigma * math.sqrt(T)), 0, 1)/(S * sigma * math.sqrt(T))
+BSM_gamma = lambda S,K,T,r,sigma: norm.pdf(d1(S, K, T, r, sigma), 0, 1)/(S * sigma * math.sqrt(T))
 
 #vega
 
-BSM_vega = lambda S,K,T,r,sigma:  S * math.sqrt(T) * norm.pdf((math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)), 0, 1)
+BSM_vega = lambda S,K,T,r,sigma:  S * math.sqrt(T) * norm.pdf(d1(S, K, T, r, sigma), 0, 1)
 
 #Rho
 
-BSM_call_rho = lambda S,K,T,r,sigma: K * T * math.exp(-r * T) * norm.cdf((math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T)) - sigma * math.sqrt(T), 0, 1)
+BSM_call_rho = lambda S,K,T,r,sigma: K * T * math.exp(-r * T) * norm.cdf(d2(S, K, T, r, sigma), 0, 1)
 
-BSM_put_rho = lambda S,K,T,r,sigma: K * T * math.exp(-r * T) * norm.cdf(-(math.log(S / K) + (r + 0.5 * sigma**2) * T)/(sigma * math.sqrt(T)) + sigma*math.sqrt(T), 0, 1)
+BSM_put_rho = lambda S,K,T,r,sigma: K * T * math.exp(-r * T) * norm.cdf(-d2(S, K, T, r, sigma), 0, 1)
     
 
 #similation

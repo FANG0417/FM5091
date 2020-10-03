@@ -1,20 +1,20 @@
-# import sys
-# sys.path.append(r"C:\Users\54571\Desktop")
-
-# import bs
-
-
-# b = bs.BSM_call_delta(49,50,0.3846,0.05,0.2)
-
-# print(b)
-
+#BSM
+import math
 import numpy as np
+from scipy.stats import norm
 
-a = np.zeros(5)
+# BSM Valuation
 
-b=(1,2,3,4,5,6)
+d1 = lambda S, K, T, r, sigma: (math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T))
+d2 = lambda S, K, T, r, sigma: d1(S, K, T, r, sigma) - (sigma * math.sqrt(T))
 
-for i in range(5):
-    a[i]=b[i]
+BSM_call_price = lambda S,K,T,r,sigma: S * norm.cdf(d1(S, K, T, r, sigma), 0, 1) - K * math.exp(-r * T) * norm.cdf(d2(S,K,T,r,sigma), 0, 1)
 
+#From Hull's Book Example15-6, we can know: S =42, K=40, T=0.5, r=0.1, sigma=0.2
+S1 = 42 
+K1 = 40  
+T1 = 0.5  
+r1 = 0.1 
+sigma1 = 0.2
+a = BSM_call_price(S1, K1, T1, r1, sigma1)
 print(a)
