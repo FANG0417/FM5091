@@ -43,7 +43,7 @@ BSM_call_rho = lambda S,K,T,r,sigma: K * T * math.exp(-r * T) * norm.cdf(d2(S, K
 BSM_put_rho = lambda S,K,T,r,sigma: - K * T * math.exp(-r * T) * norm.cdf(-d2(S, K, T, r, sigma), 0, 1)
     
 
-#similation
+#simulation
 
 #From Hull's Book Example15-6, we can know: S =42, K=40, T=0.5, r=0.1, sigma=0.2
 S1 = 42 
