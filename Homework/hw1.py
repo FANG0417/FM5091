@@ -26,7 +26,7 @@ BSM_put_delta = lambda S,K,T,r,sigma: norm.cdf(d1(S, K, T, r, sigma), 0, 1) - 1
 
 BSM_call_theta = lambda S,K,T,r,sigma: -S * norm.pdf(d1(S, K, T, r, sigma), 0, 1)* sigma / (2 * math.sqrt(T)) - r * K * math.exp(-r * T) * norm.cdf(d2(S, K, T, r, sigma),0,1)
 
-BSM_put_theta = lambda S,K,T,r,sigma: -S * norm.pdf(d1(S, K, T, r, sigma), 0, 1) * sigma / (2 * math.sqrt(T)) + r * K * math.exp(-r * T) * norm.cdf(d2(S, K, T, r, sigma), 0, 1)
+BSM_put_theta = lambda S,K,T,r,sigma: -S * norm.pdf(d1(S, K, T, r, sigma), 0, 1) * sigma / (2 * math.sqrt(T)) + r * K * math.exp(-r * T) * norm.cdf(-d2(S, K, T, r, sigma), 0, 1)
 
 #Gamma
 
