@@ -40,7 +40,7 @@ BSM_vega = lambda S,K,T,r,sigma:  S * math.sqrt(T) * norm.pdf(d1(S, K, T, r, sig
 
 BSM_call_rho = lambda S,K,T,r,sigma: K * T * math.exp(-r * T) * norm.cdf(d2(S, K, T, r, sigma), 0, 1)
 
-BSM_put_rho = lambda S,K,T,r,sigma: K * T * math.exp(-r * T) * norm.cdf(-d2(S, K, T, r, sigma), 0, 1)
+BSM_put_rho = lambda S,K,T,r,sigma: - K * T * math.exp(-r * T) * norm.cdf(-d2(S, K, T, r, sigma), 0, 1)
     
 
 #similation
