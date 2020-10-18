@@ -94,13 +94,29 @@ def Greeks(S, K, T, r, sigma, N, q):
 
 #simulation
 
-S = 50
-K = 50
-T = 0.4164
-r = 0.1
-sigma = 0.4
-N = 50
-q = 0
+# S = 50
+# K = 50
+# T = 0.4164
+# r = 0.1
+# sigma = 0.4
+# N = 50
+# q = 0
+
+# S = 100
+# K = 100
+# T = 1
+# r = 0.05
+# sigma = 0.1
+# N = 50
+# q = 0.1
+
+# S = 810
+# K = 800
+# T = 0.5
+# r = 0.05
+# sigma = 0.2
+# N = 2
+# q = 0.02
 
 print(Euro_call(S, K, T, r, sigma, N, q))
 print(Greeks(S, K, T, r, sigma, N, q))

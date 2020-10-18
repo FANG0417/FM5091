@@ -12,7 +12,6 @@ def p(T, r, sigma, N, q):
     return p 
 
 
-
 #stock prices binomial trees without inner portion of lattice
 
 def last_stock_price(S, T, sigma, N):
@@ -27,10 +26,10 @@ def last_stock_price(S, T, sigma, N):
 
 #catalogy the option（preparation)
 
-Euro_or_Amer = input("European : press 0  Amercan: press 1 : ")
+Euro_or_Amer = int(input("European : press 0  Amercan: press 1 : "))
 
-call_or_put = input("call : press 0  put: press 1 : ")
-
+call_or_put = int(input("call : press 0  put: press 1 : "))
+ 
 
 
 # European call option price
@@ -38,20 +37,21 @@ call_or_put = input("call : press 0  put: press 1 : ")
 def option_price(S, K, T, r, sigma, N, q):
 
     global tree
+
     tree = np.zeros((N+1,N+1))
-    
+
     if call_or_put == 0:
 
         tree[N,:] = np.maximum(last_stock_price(S, T, sigma, N)[:] - K, 0)
-
+        
         for i in range(N-1,-1,-1):
 
             if Euro_or_Amer == 0:
-            
+                #European call option
                 tree[i,0:i+1] = np.exp(-r * T/N) * (p(T, r, sigma, N, q) * tree[i+1,1:i+2] + (1-p(T, r, sigma, N, q)) * tree[i+1,0:i+1])
-
+                
             else:
-
+                #American call option
                 tree[i,0:i+1] = np.exp(-r * T/N) * (p(T, r, sigma, N, q) * tree[i+1,1:i+2] + (1-p(T, r, sigma, N, q)) * tree[i+1,0:i+1])
 
                 tree[i,0:i+1] = np.maximum(tree[i,0:i+1], S * u(T, sigma, N)**np.arange(i+1) * (1/u(T, sigma, N))**np.arange(i,-1,-1) - K)
@@ -64,14 +64,15 @@ def option_price(S, K, T, r, sigma, N, q):
         for i in range(N-1,-1,-1):
 
             if Euro_or_Amer == 0:
-
+                #European put option
                 tree[i,0:i+1] = np.exp(-r * T/N) * (p(T, r, sigma, N, q) * tree[i+1,1:i+2] + (1-p(T, r, sigma, N, q)) * tree[i+1,0:i+1])
         
             else:
-
+                #American put option
                 tree[i,0:i+1] = np.exp(-r * T/N) * (p(T, r, sigma, N, q) * tree[i+1,1:i+2] + (1-p(T, r, sigma, N, q)) * tree[i+1,0:i+1])
 
                 tree[i,0:i+1] = np.maximum(tree[i,0:i+1], - S * u(T, sigma, N)**np.arange(i+1) * (1/u(T, sigma, N))**np.arange(i,-1,-1) + K)
+
 
     return tree[0,0]
 
@@ -98,6 +99,7 @@ def Greeks(S, K, T, r, sigma, N, q):
 
 
 #simulation
+
 # this is American put option
 
 S = 50
@@ -105,8 +107,8 @@ K = 50
 T = 0.4164
 r = 0.1
 sigma = 0.4
-N = 50
-q = 0
+N = 5
+q = 0.1
 
 
 print("option price is", option_price(S, K, T, r, sigma, N, q))
