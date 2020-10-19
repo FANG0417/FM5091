@@ -85,11 +85,11 @@ def Greeks(S, K, T, r, sigma, N, q):
 
     gamma = (((tree[2,2] - tree[2,1])/(S * u(T, sigma, N)**2 - S)) - ((tree[2,1] - tree[2,0])/(S  - S / u(T, sigma, N)**2))) / (0.5 * (S * u(T, sigma, N)**2 - S / u(T, sigma, N)**2))
 
-    vega = (option_price(S, K, T, r, sigma+0.01, N, q) - option_price(S, K, T, r, sigma-0.01, N, q))/(2 * 0.01)
+    vega = (option_price(S, K, T, r, sigma+0.0001, N, q) - option_price(S, K, T, r, sigma-0.0001, N, q))/(2 * 0.0001) #delta sigma = 0.0001
 
-    theta = (tree[2,0] - tree[0,0])/(2 * T/N)
+    theta = (tree[2,1] - tree[0,0])/(2 * T/N)
 
-    rho = (option_price(S, K, T, r+0.0001, sigma, N, q) - option_price(S, K, T, r-0.0001, sigma, N, q))/(2 * 0.0001)
+    rho = (option_price(S, K, T, r+0.0001, sigma, N, q) - option_price(S, K, T, r-0.0001, sigma, N, q))/(2 * 0.0001) #delta r = 0.0001
 
     print("delta is", delta)
     print("gamma is", gamma)
@@ -104,11 +104,11 @@ def Greeks(S, K, T, r, sigma, N, q):
 
 S = 50
 K = 50
-T = 0.4164
+T = 0.4167
 r = 0.1
 sigma = 0.4
-N = 5
-q = 0.1
+N = 50
+q = 0
 
 
 print("option price is", option_price(S, K, T, r, sigma, N, q))
