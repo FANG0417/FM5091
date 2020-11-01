@@ -101,15 +101,14 @@ def Greeks(S, K, T, r, sigma, N, q):
 #simulation
 
 # this is American put option
-
-S = 50
-K = 50
-T = 0.4167
-r = 0.1
-sigma = 0.4
-N = 50
-q = 0
-
+size = 2
+S = 50 
+K = 50 
+T = 0.4167 
+r = 0.1 
+sigma = 0.4 
+N = 50 
+q = 0 
 
 print("option price is", option_price(S, K, T, r, sigma, N, q))
 print(Greeks(S, K, T, r, sigma, N, q))

@@ -46,14 +46,15 @@ BSM_put_rho = lambda S,K,T,r,sigma: - K * T * math.exp(-r * T) * norm.cdf(-d2(S,
 # #simulation
 
 # #From Hull's Book Example15-6, we can know: S =42, K=40, T=0.5, r=0.1, sigma=0.2
-# S1 = 42 
-# K1 = 40  
-# T1 = 0.5  
-# r1 = 0.1 
-# sigma1 = 0.2
-# a = BSM_call_price(S1, K1, T1, r1, sigma1)
-# b = BSM_put_price(S1, K1, T1, r1, sigma1)
-# print(a,b,"the answer is right")
+size = 2
+S1 = 42 * np.ones(size)
+K1 = 40  * np.ones(size)
+T1 = 0.5  * np.ones(size)
+r1 = 0.1 * np.ones(size)
+sigma1 = 0.2 * np.ones(size)
+a = BSM_call_price(S1, K1, T1, r1, sigma1)
+b = BSM_put_price(S1, K1, T1, r1, sigma1)
+print(a,b,"the answer is right")
 
 # #From Hull's Book Chapter19, we can know: call option S =49, K=50, T=0.3846, r=0.05, sigma=0.2
 # S2 = 49  
@@ -69,15 +70,15 @@ BSM_put_rho = lambda S,K,T,r,sigma: - K * T * math.exp(-r * T) * norm.cdf(-d2(S,
 # print(c,d,e,f,g,"the answer is right")
 
 #From Hull's Book Chapter19, we can know: put option S =49, K=50, T=0.3846, r=0.05, sigma=0.2
-S2 = 50 
-K2 = 50
-T2 = 0.4164 
-r2 = 0.1  
-sigma2 = 0.4
-z = BSM_put_price(S2, K2, T2, r2, sigma2)
-h = BSM_put_delta(S2, K2, T2, r2, sigma2)
-i = BSM_put_theta(S2, K2, T2, r2, sigma2)
-j = BSM_gamma(S2, K2, T2, r2, sigma2)
-k = BSM_vega(S2, K2, T2, r2, sigma2)
-l = BSM_put_rho(S2, K2, T2, r2, sigma2)
-print(z,h,i,j,k,l,"the answer is right")
+# S2 = 50 
+# K2 = 50
+# T2 = 0.4164 
+# r2 = 0.1  
+# sigma2 = 0.4
+# z = BSM_put_price(S2, K2, T2, r2, sigma2)
+# h = BSM_put_delta(S2, K2, T2, r2, sigma2)
+# i = BSM_put_theta(S2, K2, T2, r2, sigma2)
+# j = BSM_gamma(S2, K2, T2, r2, sigma2)
+# k = BSM_vega(S2, K2, T2, r2, sigma2)
+# l = BSM_put_rho(S2, K2, T2, r2, sigma2)
+# print(z,h,i,j,k,l,"the answer is right")

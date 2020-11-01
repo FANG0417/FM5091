@@ -27,7 +27,6 @@ def Bise_imsigma(S,K,r,T,opt_price,call_or_put):
     sigma_top = 10 
     torrence = 0.0001
     count = 1
-    p = 0
 
     #Basic Calculation
     im_sigma = (sigma_floor+sigma_top)/2
@@ -41,13 +40,7 @@ def Bise_imsigma(S,K,r,T,opt_price,call_or_put):
     while abs(dif)>torrence:
 
         count += 1
-        # if call_or_put == 0:
-        #     p = BSM_call_price(S,K,T,r,im_sigma)
-        # else:
-        #     p = BSM_put_price(S,K,T,r,im_sigma)
 
-        # dif = p - opt_price
-        print('1',p,dif)
         if dif<0:
             sigma_floor = im_sigma
             im_sigma = (im_sigma+sigma_top)/2
@@ -61,10 +54,44 @@ def Bise_imsigma(S,K,r,T,opt_price,call_or_put):
             p = BSM_put_price(S,K,T,r,im_sigma)
 
         dif = p - opt_price
-        print('2',p,dif)
     return im_sigma,count
 #Vectorized
 Bise_imsigma_v = np.vectorize(Bise_imsigma)
+
+
+#Newton Method
+def Newt_imsigma(S,K,r,T,opt_price,call_or_put):
+    #Basic set
+    torrence = 0.0001
+    count = 0
+    im_sigma = 0.5 #guess first
+
+    #Basic Calculation
+    if call_or_put == 0:
+            p = BSM_call_price(S,K,T,r,im_sigma)
+    else:
+            p = BSM_put_price(S,K,T,r,im_sigma)
+    dif = p - opt_price
+
+    while abs(dif)>torrence:
+
+        delta_sigma = (-p+opt_price)/BSM_vega(S,K,T,r,im_sigma)
+        im_sigma = im_sigma + delta_sigma
+
+        count += 1
+
+        if call_or_put == 0:
+            p = BSM_call_price(S,K,T,r,im_sigma)
+        else:
+            p = BSM_put_price(S,K,T,r,im_sigma)
+        dif = p - opt_price
+
+    return im_sigma,count
+#Vectorized
+Newt_imsigma_v = np.vectorize(Newt_imsigma)
+
+
+#Simulation
 
 size = 1
 S = 42 * np.ones(size)
@@ -74,5 +101,10 @@ T = 0.5 * np.ones(size)
 opt_price = 4.759 * np.ones(size)  
 call_or_put = np.zeros(size) # 0 means call, 1 means put
 
+# Bisection Method
 iv1 = Bise_imsigma_v(S,K,r,T,opt_price,call_or_put)
 print(iv1)
+
+#Newton Method
+iv2 = Newt_imsigma_v(S,K,r,T,opt_price,call_or_put)
+print(iv2)
