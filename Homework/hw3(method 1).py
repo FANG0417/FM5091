@@ -93,12 +93,12 @@ Newt_imsigma_v = np.vectorize(Newt_imsigma)
 
 #Simulation
 
-size = 1
+size = 10
 S = 42 * np.ones(size)
 K = 40 * np.ones(size) 
 r = 0.1 * np.ones(size) 
 T = 0.5 * np.ones(size) 
-opt_price = 4.759 * np.ones(size)  
+opt_price = 4.759 * np.ones(size) #opt_price must be in the range which have values
 call_or_put = np.zeros(size) # 0 means call, 1 means put
 
 # Bisection Method
