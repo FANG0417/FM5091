@@ -2,11 +2,13 @@
 import numpy as np
 from scipy.stats import norm
 import time
+from scipy.special import perm, comb
+import matplotlib.pyplot as plt
 
-a = np.array([1,2,3])
 
-b = np.array([0,1,2])
 
-c = a[b>3]
-
-print(c,'111')
+a = np.arange(4*4).reshape(4,4)
+b = np.ones(4*4).reshape(4,4)
+c = a[0:2]
+d = b[:,c]
+print(a,b)

@@ -23,8 +23,8 @@ BSM_vega = lambda S,K,T,r,sigma:  S * np.sqrt(T) * norm.pdf(d1(S, K, T, r, sigma
 def Bise_imsigma(S,K,r,T,opt_price,call_or_put):
 
     #Basic set
-    sigma_floor = 0 
-    sigma_top = 10 
+    sigma_floor = 0.0001
+    sigma_top = 50 
     torrence = 0.0001
     count = 1
 
@@ -85,7 +85,7 @@ def Newt_imsigma(S,K,r,T,opt_price,call_or_put):
         else:
             p = BSM_put_price(S,K,T,r,im_sigma)
         dif = p - opt_price
-
+        print(im_sigma,count)
     return im_sigma,count
 #Vectorized
 Newt_imsigma_v = np.vectorize(Newt_imsigma)
@@ -93,7 +93,7 @@ Newt_imsigma_v = np.vectorize(Newt_imsigma)
 
 #Simulation
 
-size = 10
+size = 1
 S = 42 * np.ones(size)
 K = 40 * np.ones(size) 
 r = 0.1 * np.ones(size) 
