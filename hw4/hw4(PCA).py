@@ -100,7 +100,7 @@ ds_eigenvalues, ds_eigenvectors = np.linalg.eig(ds_cov)
 ds_prop = np.zeros([4,1])
 for i in range(4):
     ds_prop[i] = ds_eigenvalues[i] / np.sum(ds_eigenvalues)
-print('1',ds_prop)
+
 #step 4 : reduce dimensionality
 
 dsd_eigenvaluesid = np.argsort(ds_eigenvalues) #sort
@@ -136,3 +136,5 @@ plt.subplot(313)
 plt.plot(ds_reconreturn,'o')
 plt.title('Reconstruct Original Data')
 plt.show()
+
+print(dsd_lowreturn)
