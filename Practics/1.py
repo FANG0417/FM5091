@@ -1,14 +1,15 @@
-#BSM
 import numpy as np
-from scipy.stats import norm
-import time
-from scipy.special import perm, comb
 import matplotlib.pyplot as plt
 
+d1=np.exp(-0.04)
+d2=np.exp(-0.07)
+d3=np.exp(-0.09)
+d4=np.exp(-0.1)
 
+coupon = 35*(d1+d2+d3+d4)
 
-a = np.arange(4*4).reshape(4,4)
-b = np.ones(4*4).reshape(4,4)
-c = a[0:2]
-d = b[:,c]
-print(a,b)
+price = 1000*d4
+
+pv=coupon+price
+
+print(pv)
