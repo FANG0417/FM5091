@@ -13,7 +13,7 @@ namespace RandomNumber
             double rho;
             Console.WriteLine("By straightforward method "+ straightforward());
             Console.WriteLine("By BoxMuller method " + BoxMuller());
-            Console.WriteLine("By Polar Rejection method " + Polar());
+            Console.WriteLine("By Polar Rejection method " + PolarRejection());
             Console.WriteLine("Please input rho between -1 and 1:");
             rho = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("random variables that are joint normally distributed "+ Joint(rho));
@@ -34,7 +34,7 @@ namespace RandomNumber
             }
             n = n-6;
 
-            return (n);
+            return n;
         }
 
         static Tuple<double, double> BoxMuller()
@@ -46,13 +46,13 @@ namespace RandomNumber
             double z2;
             randn1 = rnd.NextDouble();
             randn2 = rnd.NextDouble();
-            z1 = Math.Sqrt(-2 * Math.Log(Math.E, randn1)) * Math.Cos(2 * Math.PI * randn2);
-            z2 = Math.Sqrt(-2 * Math.Log(Math.E, randn2)) * Math.Cos(2 * Math.PI * randn1);
-            Tuple<double, double> y = new Tuple<double, double>(z1, z2); ;
+            z1 = Math.Sqrt(-2 * Math.Log(randn1)) * Math.Cos(2 * Math.PI * randn2);
+            z2 = Math.Sqrt(-2 * Math.Log(randn1)) * Math.Sin(2 * Math.PI * randn2);
+            Tuple<double, double> y = new Tuple<double, double>(z1, z2); 
             return y;
         }
 
-        static Tuple<double,double> Polar()
+        static Tuple<double,double> PolarRejection()
         {
             Random rnd = new Random();
             double randn1;
