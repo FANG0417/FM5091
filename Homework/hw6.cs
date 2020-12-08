@@ -184,7 +184,7 @@ namespace ConsoleApp2
             double[,] optiontree2 = option.Optionprice(S0, K, T, r, sigma-0.01, N, del, CorP, EorA);
             double vega = (optiontree1[0, 0] - optiontree2[0, 0]) / (2 * 0.01);
 
-            double theta = (optiontree[2, 2] - optiontree[0, 0]) / (2 * dt);
+            double theta = (optiontree[1, 1] - optiontree[0, 0]) /  dt;
 
             double[,] optiontree3 = option.Optionprice(S0, K, T, r+0.001, sigma, N, del, CorP, EorA);
             double[,] optiontree4 = option.Optionprice(S0, K, T, r-0.001, sigma, N, del, CorP, EorA);
