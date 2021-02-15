@@ -8,3 +8,13 @@ C:\Users\54571\source\repos\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsF
 C:\Users\54571\source\repos\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.CoreCompileInputs.cache
 C:\Users\54571\source\repos\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.exe
 C:\Users\54571\source\repos\WindowsFormsApp3\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.pdb
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.exe.config
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.exe
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.pdb
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csprojAssemblyReference.cache
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Form1.resources
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Properties.Resources.resources
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.GenerateResource.cache
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.CoreCompileInputs.cache
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.exe
+C:\Users\54571\Desktop\fmcs\5092HW1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.pdb

@@ -79,6 +79,7 @@ namespace WindowsFormsApp3
             this.textBoxS0.Name = "textBoxS0";
             this.textBoxS0.Size = new System.Drawing.Size(93, 25);
             this.textBoxS0.TabIndex = 1;
+            this.textBoxS0.TextChanged += new System.EventHandler(this.textBoxS0_TextChanged);
             // 
             // textBoxsigma
             // 
@@ -86,6 +87,7 @@ namespace WindowsFormsApp3
             this.textBoxsigma.Name = "textBoxsigma";
             this.textBoxsigma.Size = new System.Drawing.Size(93, 25);
             this.textBoxsigma.TabIndex = 2;
+            this.textBoxsigma.TextChanged += new System.EventHandler(this.textBoxsigma_TextChanged);
             // 
             // textBoxr
             // 
@@ -93,6 +95,7 @@ namespace WindowsFormsApp3
             this.textBoxr.Name = "textBoxr";
             this.textBoxr.Size = new System.Drawing.Size(93, 25);
             this.textBoxr.TabIndex = 3;
+            this.textBoxr.TextChanged += new System.EventHandler(this.textBoxr_TextChanged);
             // 
             // textBoxT
             // 
@@ -100,6 +103,7 @@ namespace WindowsFormsApp3
             this.textBoxT.Name = "textBoxT";
             this.textBoxT.Size = new System.Drawing.Size(93, 25);
             this.textBoxT.TabIndex = 4;
+            this.textBoxT.TextChanged += new System.EventHandler(this.textBoxT_TextChanged);
             // 
             // textBoxK
             // 
@@ -107,6 +111,7 @@ namespace WindowsFormsApp3
             this.textBoxK.Name = "textBoxK";
             this.textBoxK.Size = new System.Drawing.Size(93, 25);
             this.textBoxK.TabIndex = 5;
+            this.textBoxK.TextChanged += new System.EventHandler(this.textBoxK_TextChanged);
             // 
             // textBoxsteps
             // 
@@ -114,6 +119,7 @@ namespace WindowsFormsApp3
             this.textBoxsteps.Name = "textBoxsteps";
             this.textBoxsteps.Size = new System.Drawing.Size(93, 25);
             this.textBoxsteps.TabIndex = 6;
+            this.textBoxsteps.TextChanged += new System.EventHandler(this.textBoxsteps_TextChanged);
             // 
             // textBoxN
             // 
@@ -121,6 +127,7 @@ namespace WindowsFormsApp3
             this.textBoxN.Name = "textBoxN";
             this.textBoxN.Size = new System.Drawing.Size(93, 25);
             this.textBoxN.TabIndex = 7;
+            this.textBoxN.TextChanged += new System.EventHandler(this.textBoxN_TextChanged);
             // 
             // textBoxDelta
             // 

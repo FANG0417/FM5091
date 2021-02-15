@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp3
 {
-
+    //Create random number
     class RandomNumber
     {
         public class RandCreator
@@ -31,7 +31,8 @@ namespace WindowsFormsApp3
                 z1 = c * randn1;
                 return z1;
             }
-
+            
+            //create random number array
             public static double[,] Rand(int N, int steps)
             {
                 Random rnd = new Random();
@@ -49,6 +50,7 @@ namespace WindowsFormsApp3
         }
     }
 
+    //Monte Carlo simulation
     class MonteCarlo
     {
         public static double[,] MCsimu(double S0, double sigma, double r, double T, int steps, int N, double[,] R)
@@ -71,6 +73,7 @@ namespace WindowsFormsApp3
         }
     }
 
+    //Calculate price and std
     public class Option
     {
         public static double[] PandStd(double S0, double K, double sigma, double r, double T, int steps, int N, bool type, double[,] R)
@@ -111,6 +114,8 @@ namespace WindowsFormsApp3
             return value;
         }
     }
+
+    //Calculate the Greeks
     public class Greeks
     {
         public static double Delta(double S0, double K, double sigma, double r, double T, int steps, int N, bool type, double[,] R)
