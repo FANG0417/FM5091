@@ -20,31 +20,67 @@ namespace WindowsFormsApp3
         //The main body
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            DateTime beforDT = System.DateTime.Now;  //开始监视代码运行时间
+
+            //create objects
+            RandomNumber randomnumber = new RandomNumber();
+            Value value = new Value();
+            Price price = new Price();
+            Greeks greeks = new Greeks();
+
             //Define the inputs
-            double S0 = Convert.ToDouble(textBoxS0.Text);
-            double K = Convert.ToDouble(textBoxK.Text);
-            double T = Convert.ToDouble(textBoxT.Text);
-            double r = Convert.ToDouble(textBoxr.Text);
-            double sigma = Convert.ToDouble(textBoxsigma.Text);
-            int N = Convert.ToInt32(textBoxN.Text);
-            int steps = Convert.ToInt32(textBoxsteps.Text);
-            bool type;
-            if (textBoxtype.Text == "true")
-                type = true;
+            value.S = Convert.ToDouble(textBoxS0.Text);
+            value.K = Convert.ToDouble(textBoxK.Text);
+            value.T = Convert.ToDouble(textBoxT.Text);
+            value.R = Convert.ToDouble(textBoxr.Text);
+            value.Sigma = Convert.ToDouble(textBoxsigma.Text);
+            value.Trials = Convert.ToInt32(textBoxN.Text);
+            value.N = Convert.ToInt32(textBoxsteps.Text);
+
+            if (call.Checked)
+            {
+                value.Type = true;
+            }                
+            else if (put.Checked)
+            {
+                value.Type = false;
+            }
             else
-                type = false;
-            double[,] R = RandomNumber.RandCreator.Rand(N, steps);
+            {
+                MessageBox.Show("Please select either call or put");
+                return;
+            }
+
+            if (normal.Checked)
+            {
+                value.An = false;
+            }
+            else if (antithetic.Checked)
+            {
+                value.An = true;
+            }
+            else
+            {
+                MessageBox.Show("Please select method");
+                return;
+            }
+
+            double[,] Rn = randomnumber.Rand(value.Trials, value.N);
+            value.Rn = Rn;
 
             //Outputs
-            textBoxPrice.Text = Convert.ToString(Option.PandStd(S0, K, sigma, r, T, steps, N, type, R)[0]);
-            textBoxStd.Text = Convert.ToString(Option.PandStd(S0, K, sigma, r, T, steps, N, type, R)[1]);
-            textBoxDelta.Text = Convert.ToString(Greeks.Delta(S0, K, sigma, r, T, steps, N, type, R));
-            textBoxGamma.Text = Convert.ToString(Greeks.Gamma(S0, K, sigma, r, T, steps, N, type, R));
-            textBoxVega.Text = Convert.ToString(Greeks.Vega(S0, K, sigma, r, T, steps, N, type, R));
-            textBoxTheta.Text = Convert.ToString(Greeks.Theta(S0, K, sigma, r, T, steps, N, type, R));
-            textBoxRho.Text = Convert.ToString(Greeks.Rho(S0, K, sigma, r, T, steps, N, type, R));
+            textBoxPrice.Text = Convert.ToString(price.Oprice(value)[0]);
+            textBoxStd.Text = Convert.ToString(price.Oprice(value)[1]);
+            textBoxDelta.Text = Convert.ToString(greeks.Delta(value));
+            textBoxGamma.Text = Convert.ToString(greeks.Gamma(value));
+            textBoxVega.Text = Convert.ToString(greeks.Vega(value));
+            textBoxTheta.Text = Convert.ToString(greeks.Theta(value));
+            textBoxRho.Text = Convert.ToString(greeks.Rho(value));
 
+            DateTime afterDT = System.DateTime.Now;  //停止监视
+            //从afterDT中减去beforDT的时间
+            TimeSpan ts = afterDT.Subtract(beforDT);
+            textBoxTime.Text = Convert.ToString(ts);
 
         }
 
@@ -61,9 +97,7 @@ namespace WindowsFormsApp3
                 textBoxS0.BackColor = Color.White;
                 button1.Enabled = true;
             }
-               
         }
-
         //Some error settings
         private void textBoxK_TextChanged(object sender, EventArgs e)
         {
@@ -153,6 +187,41 @@ namespace WindowsFormsApp3
                 textBoxsteps.BackColor = Color.White;
                 button1.Enabled = true;
             }
+        }
+
+        private void textBoxTheta_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxRho_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void call_CheckedChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void put_CheckedChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void normal_CheckedChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
         }
     }
 }
