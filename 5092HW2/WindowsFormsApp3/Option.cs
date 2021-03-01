@@ -203,7 +203,7 @@ namespace WindowsFormsApp3
         Price price2 = new Price();
         public double Delta(Value value2)
         {
-            double d = 0.0001 * value2.S;
+            double d = 0.001 * value2.S;
 
             Value a = new Value();
             a.S = value2.S + d;
@@ -237,7 +237,7 @@ namespace WindowsFormsApp3
 
         public double Gamma(Value value2)
         {
-            double d = 0.0001 * value2.S;
+            double d = 0.001 * value2.S;
 
             Value a = new Value();
             a.S = value2.S + d;
@@ -271,7 +271,7 @@ namespace WindowsFormsApp3
         }
         public double Vega(Value value2)
         {
-            double d = 0.0001 * value2.Sigma;
+            double d = 0.001 * value2.Sigma;
 
             Value a = new Value();
             a.S = value2.S;
@@ -328,7 +328,7 @@ namespace WindowsFormsApp3
 
         public double Rho(Value value2)
         {
-            double d = 0.0001 * value2.R;
+            double d = 0.001 * value2.R;
 
             Value a = new Value();
             a.S = value2.S;
