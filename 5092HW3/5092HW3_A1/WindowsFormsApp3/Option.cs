@@ -143,8 +143,8 @@ namespace WindowsFormsApp3
                         }
                         else
                         {
-                            optionvalue1[i] = Math.Max(-tree1[i, value1.N] + value1.K, 0);
-                            optionvalue2[i] = Math.Max(-tree2[i, value1.N] + value1.K, 0);
+                            optionvalue1[i] = Math.Max(-tree1[i, value1.N] + value1.K, 0) + beta1 * cv1;
+                            optionvalue2[i] = Math.Max(-tree2[i, value1.N] + value1.K, 0) + beta1 * cv2;
                             ct = 0.5 * (optionvalue1[i] + optionvalue2[i]);
                             sum1 += ct;
                             sum2 += ct * ct;
