@@ -76,12 +76,6 @@ namespace WindowsFormsApp3
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label_pro = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox_Range = new System.Windows.Forms.CheckBox();
-            this.checkBox_Lookback = new System.Windows.Forms.CheckBox();
-            this.checkBox_European = new System.Windows.Forms.CheckBox();
-            this.checkBox_Barrier = new System.Windows.Forms.CheckBox();
-            this.checkBox_Digital = new System.Windows.Forms.CheckBox();
-            this.checkBox_Asian = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox_Rebate = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -91,6 +85,12 @@ namespace WindowsFormsApp3
             this.radioButton_DO = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox_Barrier = new System.Windows.Forms.TextBox();
+            this.radioButton_European = new System.Windows.Forms.RadioButton();
+            this.radioButton_Asian = new System.Windows.Forms.RadioButton();
+            this.radioButton_Lookback = new System.Windows.Forms.RadioButton();
+            this.radioButton_Digital = new System.Windows.Forms.RadioButton();
+            this.radioButton_Range = new System.Windows.Forms.RadioButton();
+            this.radioButton_Barrier = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -554,12 +554,12 @@ namespace WindowsFormsApp3
             // 
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
             this.groupBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBox5.Controls.Add(this.checkBox_Range);
-            this.groupBox5.Controls.Add(this.checkBox_Lookback);
-            this.groupBox5.Controls.Add(this.checkBox_European);
-            this.groupBox5.Controls.Add(this.checkBox_Barrier);
-            this.groupBox5.Controls.Add(this.checkBox_Digital);
-            this.groupBox5.Controls.Add(this.checkBox_Asian);
+            this.groupBox5.Controls.Add(this.radioButton_Barrier);
+            this.groupBox5.Controls.Add(this.radioButton_Range);
+            this.groupBox5.Controls.Add(this.radioButton_Digital);
+            this.groupBox5.Controls.Add(this.radioButton_Lookback);
+            this.groupBox5.Controls.Add(this.radioButton_Asian);
+            this.groupBox5.Controls.Add(this.radioButton_European);
             this.groupBox5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(267, 167);
             this.groupBox5.Name = "groupBox5";
@@ -567,69 +567,6 @@ namespace WindowsFormsApp3
             this.groupBox5.TabIndex = 44;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Type";
-            // 
-            // checkBox_Range
-            // 
-            this.checkBox_Range.AutoSize = true;
-            this.checkBox_Range.Location = new System.Drawing.Point(187, 63);
-            this.checkBox_Range.Name = "checkBox_Range";
-            this.checkBox_Range.Size = new System.Drawing.Size(92, 28);
-            this.checkBox_Range.TabIndex = 46;
-            this.checkBox_Range.Text = "Range";
-            this.checkBox_Range.UseVisualStyleBackColor = true;
-            this.checkBox_Range.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
-            // 
-            // checkBox_Lookback
-            // 
-            this.checkBox_Lookback.AutoSize = true;
-            this.checkBox_Lookback.Location = new System.Drawing.Point(350, 29);
-            this.checkBox_Lookback.Name = "checkBox_Lookback";
-            this.checkBox_Lookback.Size = new System.Drawing.Size(124, 28);
-            this.checkBox_Lookback.TabIndex = 45;
-            this.checkBox_Lookback.Text = "Lookback";
-            this.checkBox_Lookback.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_European
-            // 
-            this.checkBox_European.AutoSize = true;
-            this.checkBox_European.Location = new System.Drawing.Point(7, 29);
-            this.checkBox_European.Name = "checkBox_European";
-            this.checkBox_European.Size = new System.Drawing.Size(123, 28);
-            this.checkBox_European.TabIndex = 44;
-            this.checkBox_European.Text = "European";
-            this.checkBox_European.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Barrier
-            // 
-            this.checkBox_Barrier.AutoSize = true;
-            this.checkBox_Barrier.Location = new System.Drawing.Point(350, 63);
-            this.checkBox_Barrier.Name = "checkBox_Barrier";
-            this.checkBox_Barrier.Size = new System.Drawing.Size(97, 28);
-            this.checkBox_Barrier.TabIndex = 43;
-            this.checkBox_Barrier.Text = "Barrier";
-            this.checkBox_Barrier.UseVisualStyleBackColor = true;
-            this.checkBox_Barrier.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
-            // 
-            // checkBox_Digital
-            // 
-            this.checkBox_Digital.AutoSize = true;
-            this.checkBox_Digital.Location = new System.Drawing.Point(7, 63);
-            this.checkBox_Digital.Name = "checkBox_Digital";
-            this.checkBox_Digital.Size = new System.Drawing.Size(91, 28);
-            this.checkBox_Digital.TabIndex = 42;
-            this.checkBox_Digital.Text = "Digital";
-            this.checkBox_Digital.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Asian
-            // 
-            this.checkBox_Asian.AutoSize = true;
-            this.checkBox_Asian.Location = new System.Drawing.Point(187, 29);
-            this.checkBox_Asian.Name = "checkBox_Asian";
-            this.checkBox_Asian.Size = new System.Drawing.Size(84, 28);
-            this.checkBox_Asian.TabIndex = 41;
-            this.checkBox_Asian.Text = "Asian";
-            this.checkBox_Asian.UseVisualStyleBackColor = true;
-            this.checkBox_Asian.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
             // 
             // groupBox6
             // 
@@ -728,6 +665,72 @@ namespace WindowsFormsApp3
             this.textBox_Barrier.Size = new System.Drawing.Size(82, 30);
             this.textBox_Barrier.TabIndex = 0;
             // 
+            // radioButton_European
+            // 
+            this.radioButton_European.AutoSize = true;
+            this.radioButton_European.Location = new System.Drawing.Point(7, 29);
+            this.radioButton_European.Name = "radioButton_European";
+            this.radioButton_European.Size = new System.Drawing.Size(122, 28);
+            this.radioButton_European.TabIndex = 47;
+            this.radioButton_European.TabStop = true;
+            this.radioButton_European.Text = "European";
+            this.radioButton_European.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Asian
+            // 
+            this.radioButton_Asian.AutoSize = true;
+            this.radioButton_Asian.Location = new System.Drawing.Point(187, 29);
+            this.radioButton_Asian.Name = "radioButton_Asian";
+            this.radioButton_Asian.Size = new System.Drawing.Size(83, 28);
+            this.radioButton_Asian.TabIndex = 48;
+            this.radioButton_Asian.TabStop = true;
+            this.radioButton_Asian.Text = "Asian";
+            this.radioButton_Asian.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Lookback
+            // 
+            this.radioButton_Lookback.AutoSize = true;
+            this.radioButton_Lookback.Location = new System.Drawing.Point(350, 29);
+            this.radioButton_Lookback.Name = "radioButton_Lookback";
+            this.radioButton_Lookback.Size = new System.Drawing.Size(123, 28);
+            this.radioButton_Lookback.TabIndex = 49;
+            this.radioButton_Lookback.TabStop = true;
+            this.radioButton_Lookback.Text = "Lookback";
+            this.radioButton_Lookback.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Digital
+            // 
+            this.radioButton_Digital.AutoSize = true;
+            this.radioButton_Digital.Location = new System.Drawing.Point(7, 62);
+            this.radioButton_Digital.Name = "radioButton_Digital";
+            this.radioButton_Digital.Size = new System.Drawing.Size(90, 28);
+            this.radioButton_Digital.TabIndex = 50;
+            this.radioButton_Digital.TabStop = true;
+            this.radioButton_Digital.Text = "Digital";
+            this.radioButton_Digital.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Range
+            // 
+            this.radioButton_Range.AutoSize = true;
+            this.radioButton_Range.Location = new System.Drawing.Point(187, 62);
+            this.radioButton_Range.Name = "radioButton_Range";
+            this.radioButton_Range.Size = new System.Drawing.Size(91, 28);
+            this.radioButton_Range.TabIndex = 51;
+            this.radioButton_Range.TabStop = true;
+            this.radioButton_Range.Text = "Range";
+            this.radioButton_Range.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Barrier
+            // 
+            this.radioButton_Barrier.AutoSize = true;
+            this.radioButton_Barrier.Location = new System.Drawing.Point(350, 62);
+            this.radioButton_Barrier.Name = "radioButton_Barrier";
+            this.radioButton_Barrier.Size = new System.Drawing.Size(96, 28);
+            this.radioButton_Barrier.TabIndex = 52;
+            this.radioButton_Barrier.TabStop = true;
+            this.radioButton_Barrier.Text = "Barrier";
+            this.radioButton_Barrier.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -817,12 +820,6 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.CheckBox checkBox_MT;
         private System.Windows.Forms.CheckBox checkBox_CV;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox checkBox_Lookback;
-        private System.Windows.Forms.CheckBox checkBox_European;
-        private System.Windows.Forms.CheckBox checkBox_Barrier;
-        private System.Windows.Forms.CheckBox checkBox_Digital;
-        private System.Windows.Forms.CheckBox checkBox_Asian;
-        private System.Windows.Forms.CheckBox checkBox_Range;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox_Rebate;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -832,6 +829,12 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.RadioButton radioButton_UO;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox textBox_Barrier;
+        private System.Windows.Forms.RadioButton radioButton_Barrier;
+        private System.Windows.Forms.RadioButton radioButton_Range;
+        private System.Windows.Forms.RadioButton radioButton_Digital;
+        private System.Windows.Forms.RadioButton radioButton_Lookback;
+        private System.Windows.Forms.RadioButton radioButton_Asian;
+        private System.Windows.Forms.RadioButton radioButton_European;
     }
 }
 

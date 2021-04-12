@@ -77,7 +77,7 @@ namespace WindowsFormsApp3
             inprogress(20);
 
             //Outputs
-            if (checkBox_European.Checked)
+            if (radioButton_European.Checked)
             {
                 value.Rb = 0;
                 value.Bt = 0;
@@ -112,7 +112,7 @@ namespace WindowsFormsApp3
                 textBoxRho.Text = Convert.ToString(european.Rho(value));
                 inprogress(90);
             }
-            if (checkBox_Asian.Checked)
+            if (radioButton_Asian.Checked)
             {
                 value.Rb = 0;
                 value.Bt = 0;
@@ -147,7 +147,7 @@ namespace WindowsFormsApp3
                 textBoxRho.Text = Convert.ToString(asian.Rho(value));                
                 inprogress(90);
             }
-            if (checkBox_Digital.Checked)
+            if (radioButton_Digital.Checked)
             {
                 if (textBox_Rebate.Text == string.Empty)
                 {
@@ -190,7 +190,7 @@ namespace WindowsFormsApp3
                 }
                 
             }
-            if (checkBox_Barrier.Checked)
+            if (radioButton_Barrier.Checked)
             {
                 if (textBox_Barrier.Text == string.Empty)
                 {
@@ -239,7 +239,7 @@ namespace WindowsFormsApp3
                     inprogress(90);
                 }                
             }
-            if (checkBox_Lookback.Checked)
+            if (radioButton_Lookback.Checked)
             {
                 value.Rb = 0;
                 value.Bt = 0;
@@ -274,7 +274,7 @@ namespace WindowsFormsApp3
                 textBoxRho.Text = Convert.ToString(lookback.Rho(value));
                 inprogress(90);
             }
-            if (checkBox_Range.Checked)
+            if (radioButton_Range.Checked)
             {
                 value.Rb = 0;
                 value.Bt = 0;
