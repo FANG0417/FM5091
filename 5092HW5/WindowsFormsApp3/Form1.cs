@@ -33,7 +33,7 @@ namespace WindowsFormsApp3
             textBoxTime.Text = Convert.ToString(ts);
             inprogress(100);
 
-            label_pro.Text = "もう　俺の妻になったぞ";
+            label_pro.Text = "Success";
         }       
 
         public void inprogress(int i)
