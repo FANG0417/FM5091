@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="InstrumentSet" EntityType="Model1.Store.InstrumentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PriceSet" EntityType="Model1.Store.PriceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InstTypeSet" EntityType="Model1.Store.InstTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InterestRateSet" EntityType="Model1.Store.InterestRateSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TradeSet" EntityType="Model1.Store.TradeSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="InstrumentPrice" Association="Model1.Store.InstrumentPrice">
+      <End Role="Instrument" EntitySet="InstrumentSet" />
+      <End Role="Price" EntitySet="PriceSet" />
+    </AssociationSet>
+    <AssociationSet Name="InstTypeInstrument" Association="Model1.Store.InstTypeInstrument">
+      <End Role="InstType" EntitySet="InstTypeSet" />
+      <End Role="Instrument" EntitySet="InstrumentSet" />
+    </AssociationSet>
+    <AssociationSet Name="InstrumentTrade" Association="Model1.Store.InstrumentTrade">
+      <End Role="Instrument" EntitySet="InstrumentSet" />
+      <End Role="Trade" EntitySet="TradeSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="InstrumentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ticker" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Exchange" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Underlying" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Strike" Type="float" Nullable="true" />
+    <Property Name="Tenor" Type="float" Nullable="true" />
+    <Property Name="IsCall" Type="bit" Nullable="true" />
+    <Property Name="InstTypeId" Type="int" Nullable="false" />
+    <Property Name="Rebate" Type="float" Nullable="true" />
+    <Property Name="Barrier" Type="float" Nullable="true" />
+    <Property Name="BarrierType" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PriceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClosingPrice" Type="float" Nullable="false" />
+    <Property Name="InstrumentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InstTypeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InterestRateSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tenor" Type="float" Nullable="false" />
+    <Property Name="Rate" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TradeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsBuy" Type="bit" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="InstrumentId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="InstrumentPrice">
+    <End Role="Instrument" Type="Model1.Store.InstrumentSet" Multiplicity="1" />
+    <End Role="Price" Type="Model1.Store.PriceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instrument">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="InstrumentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InstTypeInstrument">
+    <End Role="InstType" Type="Model1.Store.InstTypeSet" Multiplicity="1" />
+    <End Role="Instrument" Type="Model1.Store.InstrumentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Instrument">
+        <PropertyRef Name="InstTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InstrumentTrade">
+    <End Role="Instrument" Type="Model1.Store.InstrumentSet" Multiplicity="1" />
+    <End Role="Trade" Type="Model1.Store.TradeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instrument">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trade">
+        <PropertyRef Name="InstrumentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
