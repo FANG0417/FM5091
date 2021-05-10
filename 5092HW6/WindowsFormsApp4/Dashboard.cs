@@ -398,7 +398,7 @@ namespace WindowsFormsApp4
             value.MT = false;
 
             //Rebate
-            if (Convert.ToString(trade.Instrument.Rebate) == "NULL")
+            if (trade.Instrument.Rebate == null)
                 value.Rb = 0;
             else
                 value.Rb = Convert.ToDouble(trade.Instrument.Rebate);
@@ -410,7 +410,7 @@ namespace WindowsFormsApp4
                 value.Br = Convert.ToDouble(trade.Instrument.Barrier);
 
             //Barrier Type
-            if (trade.Instrument.BarrierType == "NULL")
+            if (string.IsNullOrEmpty(trade.Instrument.BarrierType))
                 value.Bt = 0;
             if (trade.Instrument.BarrierType == "Down and out")
                 value.Bt = 1;
